@@ -26,6 +26,7 @@ wheels/
 *.egg
 .idea/
 .vs/
+calendar-sem8-tp/.vs/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
