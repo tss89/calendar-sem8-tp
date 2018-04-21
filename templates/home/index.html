@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 {% block javascript %}
-    <script type="text/javascript" src="{% static 'js/example.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 {% endblock javascript %}
 
 {% block body %}
-    {{ test }}
+    <fb:login-button 
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+    </fb:login-button>
 {% endblock body %}
