@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'calendar_sem8.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'aymaropl_callendar',
+        'USER': 'aymaropl_callendar_admin',
+        'PASSWORD': '8HJA.1MQeVV@',
+        'HOST': 'aymaro.pl',
+        'PORT': '3306',
     }
 }
 
