@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'calendar_sem8.wsgi.application'
 
-
+AUTH_USER_MODEL = 'users.CalendarUser'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -119,3 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+  os.path.join(BASE_DIR, 'static/'),
+)
