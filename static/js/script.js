@@ -49,3 +49,5 @@ function logoutFacebook(){
 function changeStatus(response){
     jQuery('.facebook__status-response').html(response);
 }
+
+jQuery('.calendar').calendar();

@@ -3,10 +3,11 @@
     box-shadow: none;
     border: 0;
     display: inline-block;
+    font-size: 12px;
     position: relative;
     top: -2px;
     border-radius: 2px;
-    padding: 4px 10px;
+    padding: 3px 10px;
     cursor: pointer;
     background: linear-gradient(#4c69ba, #3b55a0);
     border-radius: 2px;
@@ -20,4 +21,8 @@
 
 .facebook__status-response{
     text-transform: uppercase;
+}
+
+.calendar{
+    overflow: hidden;
 }
