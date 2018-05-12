@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'users',
+<<<<<<< HEAD
+    "sslserver",
+=======
     'friends',
     'sslserver',
+>>>>>>> master
 ]
 
 MIDDLEWARE = [
