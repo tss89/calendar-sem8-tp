@@ -3,10 +3,21 @@
 {% block javascript %}
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 {% endblock javascript %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+{% endblock css %}
 
 {% block body %}
     <fb:login-button 
         scope="public_profile,email"
         onlogin="checkLoginState();">
     </fb:login-button>
+    
+    <button class="button__logout" onClick="logoutFacebook()">
+        Logout
+    </button>
+
+    <p class="facebook__status">
+        Status: <span class="facebook__status-response"></span>
+    </p>
 {% endblock body %}

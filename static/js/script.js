@@ -25,6 +25,7 @@ function checkLoginState() {
 
 function statusChangeCallback(response){
     console.log(response);
+    
     jQuery.ajax({
         url         : "/flogin/token/",
         type        : "post",
@@ -37,4 +38,17 @@ function statusChangeCallback(response){
             console.log(data);
         }
     });
+
+    changeStatus(response.status);
+}
+
+function logoutFacebook(){
+    FB.logout(function(response) {
+        console.log(response);
+        changeStatus(response.status);
+    });    
+}
+
+function changeStatus(response){
+    jQuery('.facebook__status-response').html(response);
 }
