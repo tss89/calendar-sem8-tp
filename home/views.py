@@ -3,11 +3,6 @@ from friends.services import FriendsService, FriedsGeneratorService
 
 @template_view()
 def index(request):
-
-    print([FriendsService.calendar_format(friend)
-            for friend in (FriendsService.list(user=request.user)
-                           if request.user and request.user.is_authenticated else
-                           FriedsGeneratorService.generate_friends(100, False))])
     return {
         'friends': [
             FriendsService.calendar_format(friend)
