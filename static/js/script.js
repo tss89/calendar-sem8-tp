@@ -47,11 +47,12 @@ function logoutFacebook(){
 }
 
 function changeStatus(response){
-    jQuery('.facebook__status-response').html(response);
+    var facebook_status = jQuery('.facebook__status-response');
+    facebook_status.html(response);
     if(response == "connected"){
-        jQuery('.facebook__status-response').addClass("status-connected");  
+        facebook_status.addClass("status-connected");  
     } else {
-        jQuery('.facebook__status-response').removeClass("status-connected"); 
+        facebook_status.removeClass("status-connected"); 
     }
 }
 
