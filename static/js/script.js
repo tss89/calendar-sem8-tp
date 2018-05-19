@@ -51,7 +51,6 @@ function changeStatus(response){
 }
 
 jQuery(function() {
-    console.log(ArrayBrithday);
     jQuery('.calendar').calendar({
         style: 'background',
         mouseOnDay: function(e) {
