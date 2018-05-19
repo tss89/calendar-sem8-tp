@@ -49,3 +49,66 @@ function logoutFacebook(){
 function changeStatus(response){
     jQuery('.facebook__status-response').html(response);
 }
+
+var currentYear = new Date().getFullYear();
+
+jQuery(function() {
+    jQuery('.calendar').calendar({
+        mouseOnDay: function(e) {
+            if(e.events.length > 0) {
+                var content = '';
+                
+                for(var i in e.events) {
+                    content += '<div class="event-tooltip-content">'
+                                    + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
+                                    + '<div class="event-location">' + e.events[i].location + '</div>'
+                                + '</div>';
+                }
+            
+                $(e.element).popover({ 
+                    trigger: 'manual',
+                    container: 'body',
+                    html:true,
+                    content: content
+                });
+                
+                $(e.element).popover('show');
+            }
+        },
+        mouseOutDay: function(e) {
+            if(e.events.length > 0) {
+                $(e.element).popover('hide');
+            }
+        },
+        dataSource: [
+            {
+                id: 0,
+                name: 'Michał',
+                location: 'Urodziny',
+                startDate: new Date(currentYear, 11,6),
+                endDate: new Date(currentYear, 11, 6)
+            },
+            {
+                id: 1,
+                name: 'Kozioł',
+                location: 'Urodziny',
+                startDate: new Date(currentYear, 0, 20),
+                endDate: new Date(currentYear, 0, 20)
+            },
+            {
+                id: 2,
+                name: 'Oskar',
+                location: 'Urodziny',
+                startDate: new Date(currentYear, 7, 25),
+                endDate: new Date(currentYear, 7, 25)
+            },
+            {
+                id: 3,
+                name: 'Tomek',
+                location: 'Urodziny',
+                startDate: new Date(currentYear, 1, 13),
+                endDate: new Date(currentYear, 1, 13)
+            },
+        ]
+    });
+} );
