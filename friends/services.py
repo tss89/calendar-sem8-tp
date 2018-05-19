@@ -84,7 +84,7 @@ class FriedsGeneratorService:
         'Galicki', 'Halicki', 'Góral', 'Gorol', 'Hiszpan', 'Holender', 'Holenderski', 'Holland', 'Olęder', 'Olender',
         'Kaszuba', 'Kaszub', 'Kijowski', 'Kurlandt', 'Kurlandzki', 'Kurlanda', 'Kurland', 'Kurlandczyk', 'Kuruc',
         'Kuman', 'Koman', 'Litwin', 'Litwiniuk', 'Litwinowicz', 'Łotysz', 'Macedoński', 'Madziar', 'Madziara', 'Mazur',
-        'Mazurek', 'Mazurkiewicz', 'Moraw', 'Morawski', 'Moskal', '(dawniejsza', 'nazwa', 'Rosjan)', 'Niemiec',
+        'Mazurek', 'Mazurkiewicz', 'Moraw', 'Morawski', 'Moskal', 'Niemiec',
         'Niemczyk', 'Norwecki', 'Petersburski', 'Podolak', 'Podolski', 'Podolec', 'Podolan', 'Polak', 'Polok',
         'Poloczek', 'Polakowski', 'Polaczek', 'Poleszak', 'Polesiak', 'Poleski', 'Poleszczuk', 'Poleszuk', 'Pomorski',
         'Pruski', 'Prus', 'Prusak', 'Prusek', 'Prusik', 'Pruś', 'Rosjan', 'Rus', 'Rusin', 'Rusek', 'Rusak', 'Rusnak',
