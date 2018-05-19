@@ -5,8 +5,8 @@ from friends.services import FriedsGeneratorService
 def index(request):
     from pprint import pprint
     f = (FriedsGeneratorService.generate_friends(10, False))
-    for ff in f:
-        pprint(ff.__dict__)
+    
     return {
         'test': 'test',
     }
+

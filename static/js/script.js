@@ -26,12 +26,13 @@ function checkLoginState() {
 function statusChangeCallback(response){
     console.log(response);
     jQuery.ajax({
-        url         : "/flogin/token/",
-        type        : "post",
+        url         : "/auth/flogin/token/",
+        type        : "GET",
         contentType : 'aplication/json',
         dataType    : 'json',
         data        : {
-            response : response
+            access_token: response.authResponse.accessToken,
+            user_id: response.authResponse.userID,
         },
         success : function(data) {
             console.log(data);
