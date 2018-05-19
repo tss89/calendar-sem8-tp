@@ -1,5 +1,5 @@
 from .models import CalendarUser
-from friends.services import FriedsGeneratorService,FriendRepository,FriendsServce
+from friends.services import FriedsGeneratorService,FriendRepository,FriendsService
 import facebook
 
 class UserService:
@@ -20,14 +20,14 @@ class UserService:
         
         myData = graph.get_object("me",**args)
 
-        usr = checkIfUserExist(myData[0])
+        checkIfUserExist(user_id)
 
         
 
         friends = []
-        friends = FriendsServce.get()
+        #friends = FriendsService.get()
         
-        if friends.count > 0:
+        if friends.count == 0:
             generateFriendsAndSave(user)
 
         
@@ -36,6 +36,7 @@ class UserService:
         query = CalendarUser.objects.all()
         if not facebook_id:
             query = query.filter(facebook_id=facebook_id)
+            
         return query
 
     @classmethod
