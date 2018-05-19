@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 from .models import Friends, FriendUser
 
-class FriendsServce:
+class FriendsService:
 
     @classmethod
     def list(
@@ -40,6 +40,15 @@ class FriendsServce:
         if user:
             query = query.filter(frienduser__user=user)
         return query.first()
+
+    @classmethod
+    def calendar_format(cls, friend):
+        friend.name = "{} {}".format(friend.first_name, friend.last_name)
+        if isinstance(friend.birth_date, str):
+            friend.birth_date = datetime.strptime(friend.birth_date, "%Y-%m-%d")
+        friend.birth_date_month = friend.birth_date.month - 1
+        friend.birth_date_day = friend.birth_date.day
+        return friend
 
 class FriendsUserService:
 
@@ -143,7 +152,7 @@ class FriendRepository:
 
     @classmethod
     def add_friend(cls, friend: Friends, user):
-        FriendsServce.add(friend)
+        FriendsService.add(friend)
         FriendsUserService.add(friend, user)
         return friend
 
