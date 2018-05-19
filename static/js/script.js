@@ -24,7 +24,7 @@ function checkLoginState() {
 }
 
 function statusChangeCallback(response){
-    console.log(response);
+    
     jQuery.ajax({
         url         : "/flogin/token/",
         type        : "post",
@@ -34,7 +34,51 @@ function statusChangeCallback(response){
             response : response
         },
         success : function(data) {
-            console.log(data);
         }
     });
+
+    changeStatus(response.status);
 }
+
+function logoutFacebook(){
+    FB.logout(function(response) {
+        changeStatus(response.status);
+    });    
+}
+
+function changeStatus(response){
+    jQuery('.facebook__status-response').html(response);
+}
+
+jQuery(function() {
+    jQuery('.calendar').calendar({
+        style: 'background',
+        mouseOnDay: function(e) {
+            if(e.events.length > 0) {
+                var content = '';
+                
+                for(var i in e.events) {
+                    content += '<div class="event-tooltip-content">'
+                                    + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
+                                    + '<div class="event-location">' + e.events[i].location + '</div>'
+                                + '</div>';
+                }
+            
+                $(e.element).popover({ 
+                    trigger: 'manual',
+                    container: 'body',
+                    html:true,
+                    content: content
+                });
+                
+                $(e.element).popover('show');
+            }
+        },
+        mouseOutDay: function(e) {
+            if(e.events.length > 0) {
+                $(e.element).popover('hide');
+            }
+        },
+        dataSource: ArrayBrithday
+    });
+} );
