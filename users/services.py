@@ -20,14 +20,23 @@ class UserService:
         
         myData = graph.get_object("me",**args)
 
-        friends = []
-        friends = FriendsServce.get(myData[1])
-        print(friends)
-        #if friends.count > 0:
-        #    generateFriendsAndSave(user)
+        usr = checkIfUserExist(myData[0])
 
         
 
+        friends = []
+        friends = FriendsServce.get()
+        
+        if friends.count > 0:
+            generateFriendsAndSave(user)
+
+        
+    @classmethod
+    def checkIfUserExist(cls, facebook_id=None):
+        query = CalendarUser.objects.all()
+        if not facebook_id:
+            query = query.filter(facebook_id=facebook_id)
+        return query
 
     @classmethod
     def generateFriendsAndSave(cls, user):
