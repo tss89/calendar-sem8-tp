@@ -48,6 +48,11 @@ function logoutFacebook(){
 
 function changeStatus(response){
     jQuery('.facebook__status-response').html(response);
+    if(response == "connected"){
+        jQuery('.facebook__status-response').addClass("status-connected");  
+    } else {
+        jQuery('.facebook__status-response').removeClass("status-connected"); 
+    }
 }
 
 jQuery(function() {
