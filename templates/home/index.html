@@ -3,6 +3,19 @@
 {% block javascript %}
 <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap-year-calendar.min.js' %}"></script>
+    <script type="text/javascript">
+        var currentYear = new Date().getFullYear();
+        var ArrayBrithday = new Array();
+        {% for friend in friends %}
+            ArrayBrithday.push({
+                id: {%if friend.id %}{{ friend.id }}{% else %}{{ forloop.counter }}{% endif %},
+                name: "{{ friend.name }}",
+                location: "Urodziny",
+                startDate: new Date(currentYear, {{ friend.birth_date_month }}, {{ friend.birth_date_day }}),
+                endDate: new Date(currentYear, {{ friend.birth_date_month }}, {{ friend.birth_date_day }})
+            }); 
+        {% endfor %}
+    </script>
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 {% endblock javascript %}
 {% block css %}
@@ -14,7 +27,6 @@
 {% block body %}
     <div class="container text-center">
         <h1 class="header__title">Facebook Calendar</h1>
-        
         <fb:login-button 
             scope="public_profile,email"
             onlogin="checkLoginState();">
