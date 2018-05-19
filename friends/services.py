@@ -2,6 +2,7 @@ import random
 from datetime import datetime, timedelta
 
 from .models import Friends, FriendUser
+from users.models import CalendarUser
 
 class FriendsService:
 
@@ -50,6 +51,25 @@ class FriendsService:
         friend.birth_date_day = friend.birth_date.day
         return friend
 
+    @classmethod
+    def change_last_name(cls, friend, last_name):
+        if not friend or not last_name:
+            return friend
+        friend.last_name = last_name
+        return friend.save()
+
+    @classmethod
+    def change_birth_date(cls, friend, birth_date):
+        if not friend or not birth_date:
+            return friend
+        friend.birth_date = birth_date
+        return friend.save()
+
+    @classmethod
+    def remove(cls, friend):
+        FriendsUserService.remove_by_friend(friend=friend)
+        return friend.delete()
+
 class FriendsUserService:
 
     @classmethod
@@ -57,8 +77,12 @@ class FriendsUserService:
         return FriendUser(friend=friend, user=user).save()
 
     @classmethod
-    def remove(cls, friend, user):
+    def remove(cls, friend, user=None):
         return FriendUser.objects.filter(friend=friend, user=user).delete()
+
+    @classmethod
+    def remove_by_friend(cls, friend):
+        return FriendUser.objects.filter(friend=friend).delete()
 
 class FriedsGeneratorService:
 
@@ -104,6 +128,29 @@ class FriedsGeneratorService:
         YEARS_RANGE_START: datetime.strptime('1980-01-01', '%Y-%m-%d'),
         YEARS_RANGE_STOP: datetime.strptime('2010-12-31', '%Y-%m-%d'),
     }
+
+    RANDOM_FRIEND_BEHAVIOR_NEW_FRIEND = 0
+    RANDOM_FRIEND_BEHAVIOR_CHANGE_SURNAME = 1
+    RANDOM_FRIEND_BEHAVIOR_CHANGE_BIRTH_DATE = 2
+    RANDOM_FRIEND_BEHAVIOR_LEAVE_FRIEND = 3
+    RANDOM_FRIEND_BEHAVIOR_REMOVE_FRIEND = 4
+
+    @classmethod
+    def random_friend_behavior(cls):
+        random_value = random.randint(0, 4)
+        if random_value == cls.RANDOM_FRIEND_BEHAVIOR_NEW_FRIEND:
+            cls.random_friend().save()
+        elif random_value == cls.RANDOM_FRIEND_BEHAVIOR_CHANGE_SURNAME:
+            FriendsService.change_last_name(Friends.objects.order_by('?').first(), cls.__random_lastname())
+        elif random_value == cls.RANDOM_FRIEND_BEHAVIOR_CHANGE_BIRTH_DATE:
+            FriendsService.change_birth_date(Friends.objects.order_by('?').first(), cls.__random_date())
+        elif random_value == cls.RANDOM_FRIEND_BEHAVIOR_LEAVE_FRIEND:
+            friend_user = FriendUser.objects.order_by('?').first()
+            if friend_user:
+                FriendsUserService.remove(friend_user.friend, friend_user.user)
+        elif random_value == cls.RANDOM_FRIEND_BEHAVIOR_REMOVE_FRIEND:
+            FriendsService.remove(Friends.objects.order_by('?').first())
+        return random_value
 
     @classmethod
     def random_friend(cls):

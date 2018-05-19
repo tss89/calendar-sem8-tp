@@ -6,7 +6,7 @@ from django.conf import settings
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'calendar_sem8.settings')
 
-celery_app = Celery('proj')
+celery_app = Celery('proj', broker=settings.CELERY_BROKER_URL)
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.

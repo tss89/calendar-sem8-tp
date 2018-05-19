@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -104,6 +106,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CELERY_BROKER_URL = 'pyamqp://guest@rabbit:5672//'
+
+CELERY_BEAT_SCHEDULE = {
+    'random-friend-behavior': {
+        'task': 'friends.tasks.friends_check',
+        'schedule': crontab(minute='*/5')
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
