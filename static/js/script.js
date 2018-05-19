@@ -47,7 +47,13 @@ function logoutFacebook(){
 }
 
 function changeStatus(response){
-    jQuery('.facebook__status-response').html(response);
+    var facebook_status = jQuery('.facebook__status-response');
+    facebook_status.html(response);
+    if(response == "connected"){
+        facebook_status.addClass("status-connected");  
+    } else {
+        facebook_status.removeClass("status-connected"); 
+    }
 }
 
 jQuery(function() {
