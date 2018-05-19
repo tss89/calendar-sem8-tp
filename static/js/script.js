@@ -51,10 +51,9 @@ function changeStatus(response){
     jQuery('.facebook__status-response').html(response);
 }
 
-var currentYear = new Date().getFullYear();
-
 jQuery(function() {
     jQuery('.calendar').calendar({
+        style: 'background',
         mouseOnDay: function(e) {
             if(e.events.length > 0) {
                 var content = '';
@@ -81,35 +80,6 @@ jQuery(function() {
                 $(e.element).popover('hide');
             }
         },
-        dataSource: [
-            {
-                id: 0,
-                name: 'Michał',
-                location: 'Urodziny',
-                startDate: new Date(currentYear, 11,6),
-                endDate: new Date(currentYear, 11, 6)
-            },
-            {
-                id: 1,
-                name: 'Kozioł',
-                location: 'Urodziny',
-                startDate: new Date(currentYear, 0, 20),
-                endDate: new Date(currentYear, 0, 20)
-            },
-            {
-                id: 2,
-                name: 'Oskar',
-                location: 'Urodziny',
-                startDate: new Date(currentYear, 7, 25),
-                endDate: new Date(currentYear, 7, 25)
-            },
-            {
-                id: 3,
-                name: 'Tomek',
-                location: 'Urodziny',
-                startDate: new Date(currentYear, 1, 13),
-                endDate: new Date(currentYear, 1, 13)
-            },
-        ]
+        dataSource: ArrayBrithday
     });
 } );
