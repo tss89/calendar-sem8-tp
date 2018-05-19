@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users',
     'friends',
     'sslserver',
+    'celery',
 ]
 
 MIDDLEWARE = [

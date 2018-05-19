@@ -1,2 +1,4 @@
 facebook-sdk
 django-sslserver
+celery==4.1.0
+rabbitmq==0.2.0
