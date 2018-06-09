@@ -3,6 +3,9 @@ from friends.services import FriendsService, FriedsGeneratorService
 
 @template_view()
 def index(request):
+
+    print(request.user)
+
     return {
         'friends': [
             FriendsService.calendar_format(friend)
@@ -12,3 +15,4 @@ def index(request):
         ],
         'test': 'test',
     }
+
