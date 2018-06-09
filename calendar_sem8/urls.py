@@ -23,6 +23,7 @@ from home.views import index
 urlpatterns = [
     url(r'^', include('home.urls')),
     url(r'^auth/', include('auth.urls')),
+    url(r'^logout/', include('logout.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

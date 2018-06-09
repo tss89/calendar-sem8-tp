@@ -63,5 +63,9 @@ class UserService:
         friends = FriedsGeneratorService.generate_friends(20)
         FriendRepository.addfriends(friends,user)
 
+    @classmethod
+    def logoutHandler(cls, request):
+        logout(request)
+
 
    
