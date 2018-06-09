@@ -21,8 +21,25 @@
 
 .facebook__status-response{
     text-transform: uppercase;
+    background: #babbbf;
+    color: white;
+    padding: 7px 15px;
 }
 
 .calendar{
     overflow: hidden;
+}
+td.day.day-start {
+    background: #405ba8 !important;
+    color: white;
+}
+.event-name {
+    color: black!important;
+    font-weight: 600;
+}
+.facebook__status{
+    margin-top: 10px;
+}
+.status-connected{
+    background: #6da840;
 }
